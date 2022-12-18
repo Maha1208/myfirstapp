@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import react, {useState} from 'react';
+import Loginform from './Loginform';
 
-function App() {
+ function App(){
+  const userDetails={
+    email:"name@gmail.com",
+    password:"user1234"
+  }
+
+  const [user, setUser] = useState({email:"", password:""});
+  const [error, seterror] = useState("");
+
+  const Login = details => {
+    console.log(details);
+    
+    if(details.email == userDetails.email && details.password == userDetails.password){
+      console.log("Logged in");
+      setUser({
+        email:details.email,
+        password:details.password
+      })
+    } 
+    else
+    {
+      console.log("Details doesn't match")
+    }
+
+  const Logout = () => {
+    setUser({ email:"", password:""})
+   
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <h1 className="App">
+      {(user.email !== "")? (
+        <h2 className="welcome">
+          <h2>Welcome,<span>{user.email}</span></h2>
+          <button onClick={Logout}>Logout</button>
+          </h2>
+      ) : (
+      <Loginform Login={Login} error={error}/>
+      )}
+    </h1>
+    
   );
 }
 
+}
 export default App;
