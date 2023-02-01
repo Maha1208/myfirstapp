@@ -1,18 +1,17 @@
 import React from 'react';
 import Product from './Product';
-import CottonSaree from './Cottonsaree';
 import { Route, Switch} from "react-router-dom";
 
-const Routes = () => {
+const Route1 = () => {
   return (
     <div>
         <switch>
             <Route path='/' exact>
-                <CottonSaree/>
+                <Product/>
             </Route>
         </switch>
     </div>
   )
 }
 
-export default Routes
+export default Route1
